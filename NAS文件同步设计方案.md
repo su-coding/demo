@@ -1,5 +1,7 @@
 # NAS文件同步设计方案
 
+**基于FTP协议连接NAS服务器。**
+
 ## 流程步骤
 
 通过定时任务按照一定的频率去执行NAS文件同步+文件解析落库 
@@ -165,9 +167,18 @@ src/main/java/com/yourproject/
     └── NasMonitorProcessor.java
 ```
 
-### 枚举类
+### Maven依赖
+pom.xml
+```xml
+<dependency>
+    <groupId>commons-net</groupId>
+    <artifactId>commons-net</artifactId>
+    <version>3.11.0</version>
+</dependency>
+```
 
-1. SyncStatusEnum.java
+### 枚举类
+SyncStatusEnum.java
 
 ```java
 package com.yourproject.enums;
@@ -207,7 +218,7 @@ public enum SyncStatusEnum {
 }
 ```
 
-2. ParseStatusEnum.java
+ParseStatusEnum.java
 
 ```java
 package com.yourproject.enums;
@@ -256,7 +267,7 @@ public enum ParseStatusEnum {
 }
 ```
 
-3. CurrentLocationEnum.java
+CurrentLocationEnum.java
 
 ```java
 package com.yourproject.enums;
